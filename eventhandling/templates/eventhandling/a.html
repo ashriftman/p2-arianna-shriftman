@@ -65,6 +65,37 @@
 
 	// your solution here
 
+// 1. click on a purple bubble to "pop" all purple bubbles
+$( ".bg-purple" ).click(function() {
+  $( ".bg-purple" ).hide();
+}); 
+
+//  2. click on a green bubble to "pop" all green and bg-blue
+$( ".bg-green" ).click(function() {
+  $( ".bg-green" ).hide();
+  $(".bg-blue").hide();
+});
+
+// 3. click on a orange bordered bubble to "pop" all other orange bordered bubbles
+$(".bg-orange.p2-border").click(function(){
+  $(".bg-orange.p2-border").hide();
+})
+
+// 4. hover over the gradient bubble to hide the gradient bubble
+$("#gradient-circle").hover(
+  function(){
+  $("#gradient-circle").hide()
+  },
+  function(){
+  $("#gradient-circle").show()
+  }
+);
+
+//reset button
+$(".btn").click(function(){
+  $(".p2-circle:hidden").show();
+});
+
 </script>
 </body>
 </html>
