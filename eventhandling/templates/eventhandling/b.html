@@ -29,7 +29,9 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="shape-container">
+
 					<!-- Dynamically add your circles here! -->
+          <div class="p2-circle bg-blue"></div>
 					<!-- Example circle: <div class="p2-circle bg-blue"></div> -->
 				</div>
 			</div>
@@ -40,7 +42,24 @@
 <script type="text/javascript">
 
 	// your solution here
+function start() {
+  add = setInterval(function() {
+    $(".shape-container").append("<div class='p2-circle bg-blue'></div>")
+  }, 1000); 
+}
 
+start();
+$(".btn").click(function(){
+  clearInterval(add);
+});
+
+
+
+// for(var i = 0;i < 4; i++){
+//         setInterval(function(){
+//             $(".shape-container").append("<div class='p2-circle bg-blue'></div>")
+//         },1000)
+//  }
 </script>
 </body>
 </html>
