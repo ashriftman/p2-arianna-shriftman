@@ -76,7 +76,7 @@
 				}
 			}
         function myGradientInteraction() {
-           //red rectangle (TODO: center)
+           //red rectangle 
           var path = new paper.Path.Rectangle([250, 300], [250, 100]);
 		      path.fillColor = "#FF0000";
           var tool = new paper.Tool();
@@ -104,32 +104,33 @@
                 }
           }
 
-
+           var hit;
         
-        //   			tool.onMouseDown = function (event) {
-				//     var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
-				//     if (hit) {
-				//     		// Color pallette keeps track of the full history of colors, though we
-				//     		// only color in with the most-recent color.
-				//         hit.item.fillColor = cp.history[cp.history.length - 1];
+          			tool.onMouseDown = function (event) {
+				     hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
+            start = event.point
 
-        //         //gradient colors
-        //         stopOne = cp.history[cp.history.length - 2];
-        //         stopTwo = cp.history[cp.history.length - 1];
+			
+				}
 
-        //         // //fill the rect with gradient
-        //         // myRect.fillColor = {
-        //         //   "gradient": {
-        //         //     "stops": [stopOne, stopTwo],
-        //         //     "radial": false
-        //         //   },
-        //         //   origin: [50,50],
-        //         //   destination: [100,100]
-        //         // }
+        tool.onMouseUp = function (event) {
+          stopOne = cp.history[cp.history.length - 2];
+            stopTwo = cp.history[cp.history.length - 1];
+          end = event.point
+          		    if (hit) {
+				    		// Color pallette keeps track of the full history of colors, though we
+				    		// only color in with the most-recent color.
+				        hit.item.fillColor = {
+                   "gradient": {
+                    "stops": [stopOne, stopTwo],
+                    "radial": false
+                  },
+                  origin: start,
+                  destination: end
+                }
 
-
-				//     }
-				// }
+				    }
+        }
         
         
     
