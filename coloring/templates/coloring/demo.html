@@ -76,11 +76,33 @@
 				}
 			}
         function myGradientInteraction() {
-         
-           var path = new paper.Path.Rectangle([250, 200], [200, 200]);
+           //red rectangle (TODO: center)
+          var path = new paper.Path.Rectangle([250, 200], [200, 200]);
 		      path.fillColor = "#FF0000";
           var tool = new paper.Tool();
+          var start;
           
+          path.onMouseDown = function (event) {
+            //this.fillColor = "black"
+            start = event.point
+            console.log(event.point)
+          }
+
+          path.onMouseUp = function (event) {
+            end = event.point
+            console.log(event.point)
+            stopOne = cp.history[cp.history.length - 2];
+            stopTwo = cp.history[cp.history.length - 1];
+
+               path.fillColor = {
+                  "gradient": {
+                    "stops": [stopOne, stopTwo],
+                    "radial": false
+                  },
+                  origin: start,
+                  destination: end
+                }
+          }
 
 
         
@@ -95,15 +117,15 @@
                 stopOne = cp.history[cp.history.length - 2];
                 stopTwo = cp.history[cp.history.length - 1];
 
-                //fill the rect with gradient
-                myRect.fillColor = {
-                  "gradient": {
-                    "stops": [stopOne, stopTwo],
-                    "radial": false
-                  },
-                  origin: [50,50],
-                  destination: [100,100]
-                }
+                // //fill the rect with gradient
+                // myRect.fillColor = {
+                //   "gradient": {
+                //     "stops": [stopOne, stopTwo],
+                //     "radial": false
+                //   },
+                //   origin: [50,50],
+                //   destination: [100,100]
+                // }
 
 
 				    }
