@@ -114,20 +114,22 @@
  //----Rotate Box-----//
   var rotateElement = document.getElementById('rotate-box');
   var mc = new Hammer(rotateElement);
-
+  mc.get('rotate').set({ enable: true });
     
   mc.on("rotate", function(ev) {
       rotateElement.textContent = ev.type +" gesture detected.";
+      $(rotateElement).css('background','pink');
   });
 
    //----Pinch Box-----//
   var pinchElement = document.getElementById('pinch-box');
   var mc = new Hammer(pinchElement);
+  mc.get('pinch').set({ enable: true });
 
   mc.on("pinch", function(ev) {
       pinchElement.textContent = ev.type +" gesture detected.";
-      $(pinchElement).css('height','-=50px');
-      $(pinchElement).css('width','-=50px');
+      $(pinchElement).css('height','-=.5px');
+      $(pinchElement).css('width','-=.5px');
   });
 
    //----Press Box-----//
@@ -142,11 +144,19 @@
     //----Swipe Box-----//
   var swipeElement = document.getElementById('swipe-box');
   var mc = new Hammer(swipeElement);
+  var idx = 0;
 
   mc.on("swipe", function(ev) {
       swipeElement.textContent = ev.type +" gesture detected.";
-      $(swipeElement).css('border','solid red');
-      $(swipeElement).css('border','+=2px');
+      console.log(ev.type)
+      if(idx % 2 == 0){
+         $(swipeElement).css('background','yellow');
+      }
+      else{
+        $(swipeElement).css('background','orange');
+      }
+      
+      idx++
   });
 
   </script>
