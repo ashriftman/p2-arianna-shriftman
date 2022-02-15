@@ -90,8 +90,10 @@
   var mc = new Hammer(tapElement);
 
   // listen to events...
-mc.on("panleft panright tap press", function(ev) {
+mc.on("tap", function(ev) {
     tapElement.textContent = ev.type +" gesture detected.";
+    document.getElementById("tap-box").style.height = "150px";
+    document.getElementById("tap-box").style.width = "150px";
 });
 
   //Pan Box
@@ -99,8 +101,15 @@ mc.on("panleft panright tap press", function(ev) {
   var mc = new Hammer(panElement);
 
   // listen to events...
-mc.on("panleft panright tap press", function(ev) {
+mc.on("panleft panright", function(ev) {
     panElement.textContent = ev.type +" gesture detected.";
+    console.log(ev.type);
+    if(ev.type == "panleft"){
+      panElement.style.background = "red"
+    }
+    if(ev.type == "panright"){
+      panElement.style.background = "blue"
+    }
 });
 
   //rotate Box
