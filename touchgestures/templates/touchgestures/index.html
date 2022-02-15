@@ -84,7 +84,43 @@
 	</div>
 	<script>
     
-	  // your solution here
+// your solution here
+  //Tap Box
+  var tapElement = document.getElementById('tap-box');
+  var mc = new Hammer(tapElement);
+
+  // listen to events...
+mc.on("panleft panright tap press", function(ev) {
+    tapElement.textContent = ev.type +" gesture detected.";
+});
+
+  //Pan Box
+  var panElement = document.getElementById('pan-box');
+  var mc = new Hammer(panElement);
+
+  // listen to events...
+mc.on("panleft panright tap press", function(ev) {
+    panElement.textContent = ev.type +" gesture detected.";
+});
+
+  //rotate Box
+  var rotateElement = document.getElementById('rotate-box');
+  var mc = new Hammer(rotateElement);
+
+  // listen to events...
+mc.on("panleft panright tap press", function(ev) {
+    rotateElement.textContent = ev.type +" gesture detected.";
+});
+
+  //Pinch Box
+  var pinchElement = document.getElementById('pinch-box');
+  var mc = new Hammer(pinchElement);
+
+  // listen to events...
+mc.on("panleft panright tap press", function(ev) {
+    pinchElement.textContent = ev.type +" gesture detected.";
+});
+
 
   </script>
 </body>
