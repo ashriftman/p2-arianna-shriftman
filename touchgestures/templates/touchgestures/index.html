@@ -84,52 +84,70 @@
 	</div>
 	<script>
     
-// your solution here
-  //Tap Box
+
+  //----Tap Box-----//
   var tapElement = document.getElementById('tap-box');
   var mc = new Hammer(tapElement);
 
-  // listen to events...
-mc.on("tap", function(ev) {
-    tapElement.textContent = ev.type +" gesture detected.";
-    document.getElementById("tap-box").style.height = "150px";
-    document.getElementById("tap-box").style.width = "150px";
-});
 
-  //Pan Box
+  mc.on("tap", function(ev) {
+      tapElement.textContent = ev.type +" gesture detected.";
+      $(tapElement).css('height','+=50px');
+      $(tapElement).css('width','+=50px');
+     
+  });
+
+  //----Pan Box-----//
   var panElement = document.getElementById('pan-box');
   var mc = new Hammer(panElement);
+  mc.on("panleft panright", function(ev) {
+      panElement.textContent = ev.type +" gesture detected.";
+      console.log(ev.type);
+      if(ev.type == "panleft"){
+        panElement.style.background = "red"
+      }
+      if(ev.type == "panright"){
+        panElement.style.background = "blue"
+      }
+  });
 
-  // listen to events...
-mc.on("panleft panright", function(ev) {
-    panElement.textContent = ev.type +" gesture detected.";
-    console.log(ev.type);
-    if(ev.type == "panleft"){
-      panElement.style.background = "red"
-    }
-    if(ev.type == "panright"){
-      panElement.style.background = "blue"
-    }
-});
-
-  //rotate Box
+ //----Rotate Box-----//
   var rotateElement = document.getElementById('rotate-box');
   var mc = new Hammer(rotateElement);
 
-  // listen to events...
-mc.on("panleft panright tap press", function(ev) {
-    rotateElement.textContent = ev.type +" gesture detected.";
-});
+    
+  mc.on("rotate", function(ev) {
+      rotateElement.textContent = ev.type +" gesture detected.";
+  });
 
-  //Pinch Box
+   //----Pinch Box-----//
   var pinchElement = document.getElementById('pinch-box');
   var mc = new Hammer(pinchElement);
 
-  // listen to events...
-mc.on("panleft panright tap press", function(ev) {
-    pinchElement.textContent = ev.type +" gesture detected.";
-});
+  mc.on("pinch", function(ev) {
+      pinchElement.textContent = ev.type +" gesture detected.";
+      $(pinchElement).css('height','-=50px');
+      $(pinchElement).css('width','-=50px');
+  });
 
+   //----Press Box-----//
+  var pressElement = document.getElementById('press-box');
+  var mc = new Hammer(pressElement);
+
+  mc.on("press", function(ev) {
+      pressElement.textContent = ev.type +" gesture detected.";
+      $(pressElement).css('opacity','-=0.1');
+  });
+
+    //----Swipe Box-----//
+  var swipeElement = document.getElementById('swipe-box');
+  var mc = new Hammer(swipeElement);
+
+  mc.on("swipe", function(ev) {
+      swipeElement.textContent = ev.type +" gesture detected.";
+      $(swipeElement).css('border','solid red');
+      $(swipeElement).css('border','+=2px');
+  });
 
   </script>
 </body>
